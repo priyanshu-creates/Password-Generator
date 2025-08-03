@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="app-container">
+        <div class="password-generator-card">
+            <!-- Header Section -->
+            <header class="generator-header">
+                <div class="header-left">
+                    <span class="header-prompt">Generate a secure password</span>
+                </div>
+            </header>
+
+            <!-- Password Display Section -->
+            <div class="password-display-section">
+                <div class="password-display-container">
+                    <input 
+                        readonly 
+                        class="password-display-input" 
+                        data-passwordDisplay
+                        aria-label="Generated password"
+                    >
+                    <button 
+                        class="copy-button" 
+                        data-copy
+                        aria-label="Copy password to clipboard"
+                    >
+                        <span class="copy-message" data-copyMsg></span>
+                        <svg class="copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 4H4V16H16V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 8H8V20H20V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashed Separator -->
+            <div class="separator-line"></div>
+
+            <!-- Customization Section -->
+            <div class="customization-section">
+                <h2 class="customization-title">Customize your password</h2>
+                
+                <div class="customization-content">
+                    <!-- Left Column - Character Options -->
+                    <div class="options-column">
+                        <div class="character-options">
+                            <div class="option-item">
+                                <input type="checkbox" id="uppercase" class="option-checkbox">
+                                <label for="uppercase" class="option-label">Uppercase</label>
+                            </div>
+
+                            <div class="option-item">
+                                <input type="checkbox" id="lowercase" class="option-checkbox">
+                                <label for="lowercase" class="option-label">Lowercase</label>
+                            </div>
+
+                            <div class="option-item">
+                                <input type="checkbox" id="numbers" class="option-checkbox">
+                                <label for="numbers" class="option-label">Numeric</label>
+                            </div>
+
+                            <div class="option-item">
+                                <input type="checkbox" id="symbols" class="option-checkbox">
+                                <label for="symbols" class="option-label">Symbols</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Length Control -->
+                    <div class="length-column">
+                        <div class="length-control">
+                            <div class="length-header">
+                                <span class="length-label">Password Length:</span>
+                                <div class="length-value-container">
+                                    <span class="length-value" data-lengthNumber>20</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Traditional Slider -->
+                            <div class="slider-container">
+                                <input 
+                                    type="range" 
+                                    min="1" 
+                                    max="20" 
+                                    class="length-slider" 
+                                    step="1" 
+                                    data-lengthSlider
+                                    aria-label="Password length slider"
+                                >
+                                <div class="slider-controls">
+                                    <button class="slider-btn slider-minus" data-minusBtn>
+                                        <span>-</span>
+                                    </button>
+                                    <button class="slider-btn slider-plus" data-plusBtn>
+                                        <span>+</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="generate-section">
+                <button class="generate-button" data-generateBtn>
+                    <span class="button-text">Generate</span>
+                </button>
+            </div>
+
+            <!-- Password Strength Indicator -->
+            <div class="strength-section">
+                <div class="strength-container">
+                    <span class="strength-label">STRENGTH</span>
+                    <div class="strength-meter">
+                        <span class="strength-text" data-strengthText>MEDIUM</span>
+                        <div class="strength-bars">
+                            <div class="strength-bar" data-strengthBar="1"></div>
+                            <div class="strength-bar" data-strengthBar="2"></div>
+                            <div class="strength-bar" data-strengthBar="3"></div>
+                            <div class="strength-bar" data-strengthBar="4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+    <!-- Stagewise Toolbar - Development Mode Only -->
+    <script>
+        // Development mode detection
+        const isDevelopment = window.location.hostname === 'localhost' || 
+                            window.location.hostname === '127.0.0.1' || 
+                            window.location.hostname === '::1' ||
+                            window.location.port !== '' ||
+                            window.location.protocol === 'file:';
+        
+        if (isDevelopment) {
+            // Load stagewise toolbar using a more reliable method
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.innerHTML = `
+                import { initToolbar } from 'https://esm.sh/@stagewise/toolbar@latest';
+                initToolbar();
+            `;
+            document.head.appendChild(script);
+        }
+    </script>
+</body>
+</html>
