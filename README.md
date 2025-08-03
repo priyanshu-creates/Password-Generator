@@ -95,6 +95,6 @@ Distributed under the MIT License. See `LICENSE` for more info.
 
 **Priyanshu**  
 [GitHub](https://github.com/priyanshu-creates)  
-Email: your.email@example.com
+Email: priyanshuroy.academics@gmail.com
 
 Project Link: [https://github.com/priyanshu-creates/Password-Generator](https://github.com/priyanshu-creates/Password-Generator)
